@@ -1,13 +1,28 @@
 import Todo from "./todos";
 
 const Project = (title) => {
+
+    let _title = title;
     let projectTodos = [];
 
-    function addTodo(title, description, dueDate, priority, checklist){
-        projectTodos.push(Todo(title, description, dueDate, priority, checklist));
+    function setTitle(value){
+        _title = value;
+    };
+
+    function getTitle(){
+        return _title;
+    };
+    
+
+    function addTodo(todo){
+        //title, description, dueDate, priority
+        projectTodos.push(todo);
+    }
+    function getProjectTodos(){
+        return projectTodos.toString();
     }
 
-    return{title, addTodo};
+    return{setTitle, getTitle, addTodo, getProjectTodos};
 }
 
 export default Project;

@@ -17,7 +17,23 @@ const Todo = (title, description, dueDate, priority) => {
     function getPriority(){
         return _priority;
     };
-    return{getTitle, getDescription, getDueDate, getPriority};
+    function setTitle(value){
+        _title = value;
+    };
+    function setDescription(value){
+        _description = value;
+    };
+    function setDueDate(value){
+        _dueDate = value;
+    };
+    function setPriority(value){
+        _priority = value;
+    };
+    function toString(){
+        return _title + ' ' + _description + ' ' + _dueDate + ' ' + _priority;
+    };
+    return{getTitle, getDescription, getDueDate, getPriority,
+         setTitle, setDescription, setDueDate, setPriority, toString};
 };
 
 export default Todo;
