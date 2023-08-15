@@ -1,6 +1,8 @@
 import Master from "./master";
+import Project from "./projects";
 
 const master = Master();
+
 
 function pageLoad(){
     projectDisplay();
@@ -9,15 +11,27 @@ function pageLoad(){
 //Function for getting the projects and displaying them
 function projectDisplay(){
     let projects = document.getElementById('projects');
-    projects.innerHTML = master.getProjects();
+    projects.innerHTML = '';
+    let projectTitles = master.getProjects();
+    projectTitles.forEach((title, index) => {
+        const projectDiv = document.createElement("div");
+        projectDiv.classList.add('project');
+        projectDiv.setAttribute("data-index", index);
+        projectDiv.textContent = title;
+        projects.appendChild(projectDiv);
+        projectDiv.addEventListener("click", () => {
+            handleProjectClick(index);
+          });
+      });
     console.log(master.getProjects());
 }
 
+//Function to create new Projects and displaying
 function createProject(){
     let taskbar = document.getElementById('taskbar');
     const newProjectButton = document.createElement('button');
-    const newProjectModal = document.getElementById('modal');
-    const closeModal = document.getElementById('closeModal');
+    const newProjectModal = document.getElementById('projectModal');
+    const closeModal = document.getElementById('closeProjectModal');
     newProjectButton.innerHTML = 'New Project';
     newProjectButton.addEventListener('click', () => {
         newProjectModal.showModal();
@@ -37,7 +51,11 @@ function createProject(){
     });
 }
 
-//Function to create new Projects and displaying
-
 //Function for adding new todos 
+function addTodo(){
+    let todoList = document.getElementById('list');
+    let newTodoButton = document.createElement('button');
+
+}
+
 export default pageLoad;

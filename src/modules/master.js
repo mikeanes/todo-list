@@ -7,7 +7,6 @@ import Project from "./projects";
 const Master = () => {
     let projects = [];
     newProject('Universal');
-    newProject('Poopoo');
 
     function getProjects(){
         return projects.map(project => project.getTitle());
