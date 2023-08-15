@@ -19,7 +19,7 @@ const Project = (title) => {
         projectTodos.push(todo);
     }
     function getProjectTodos(){
-        return projectTodos.toString();
+        return projectTodos.map(todos => todos.toString());
     }
 
     return{setTitle, getTitle, addTodo, getProjectTodos};
