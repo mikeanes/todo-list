@@ -2,7 +2,7 @@ import Master from "./master";
 import Project from "./projects";
 
 const master = Master();
-
+const project = Project();
 
 function pageLoad(){
     projectDisplay();
@@ -15,13 +15,19 @@ function projectDisplay(){
     let projectTitles = master.getProjects();
     projectTitles.forEach((title, index) => {
         const projectDiv = document.createElement("div");
+        const projectTitle = document.createElement('p');
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = 'Delete';
         projectDiv.classList.add('project');
         projectDiv.setAttribute("data-index", index);
-        projectDiv.textContent = title;
-        projects.appendChild(projectDiv);
-        projectDiv.addEventListener("click", () => {
+        projectTitle.textContent = title;
+        projectDiv.appendChild(projectTitle);
+        projectTitle.addEventListener("click", () => {
             handleProjectClick(index);
           });
+        projectDiv.appendChild(deleteButton);
+        projects.appendChild(projectDiv);
+        
       });
     console.log(master.getProjects());
 }
@@ -49,6 +55,16 @@ function createProject(){
         projectTitle.value = '';
         projectDisplay();
     });
+}
+
+function deleteProject(){
+    
+}
+
+//Need function for selecting current project
+//When a project is selected all todos created will be added to it
+function selectProject(){
+
 }
 
 //Function for adding new todos 

@@ -38,3 +38,7 @@ body{
     grid-column: 2 / 3;
     background: rgb(5, 61, 5);
 }
+
+.project{
+    display: flex;
+}

@@ -16,8 +16,12 @@ const Master = () => {
         projects.push(Project(title));
     };
 
+    function deleteProject(index){
+        projects.splice(index, 1);
+    }
+
     
-    return {newProject, getProjects};
+    return {newProject, getProjects, deleteProject};
 }
 
 export default Master;
