@@ -18,7 +18,7 @@ const Master = () => {
 
     function deleteProject(index){
         projects.splice(index, 1);
-    }
+    };
 
     
     return {newProject, getProjects, deleteProject};

@@ -3,6 +3,7 @@ import Project from "./projects";
 
 const master = Master();
 const project = Project();
+let selectedProject;
 
 function pageLoad(){
     projectDisplay();
@@ -23,8 +24,11 @@ function projectDisplay(){
         projectTitle.textContent = title;
         projectDiv.appendChild(projectTitle);
         projectTitle.addEventListener("click", () => {
-            handleProjectClick(index);
+            selectProject(index);
           });
+        deleteButton.addEventListener("click", () => {
+            deleteProject(index);
+        });
         projectDiv.appendChild(deleteButton);
         projects.appendChild(projectDiv);
         
@@ -57,14 +61,17 @@ function createProject(){
     });
 }
 
-function deleteProject(){
-    
-}
+function deleteProject(index){
+    master.deleteProject(index);
+    projectDisplay();
+};
 
 //Need function for selecting current project
 //When a project is selected all todos created will be added to it
-function selectProject(){
-
+function selectProject(index){
+    let projectTitles = master.getProjects();
+    selectedProject = projectTitles[index];
+    console.log(selectedProject);
 }
 
 //Function for adding new todos 
@@ -72,6 +79,6 @@ function addTodo(){
     let todoList = document.getElementById('list');
     let newTodoButton = document.createElement('button');
 
-}
+};
 
 export default pageLoad;
