@@ -13,7 +13,6 @@ const Project = (title) => {
         return _title;
     };
     
-
     function addTodo(title, description, dueDate, priority){
         projectTodos.push(Todo(title, description, dueDate, priority));
     }

@@ -13,7 +13,7 @@ function pageLoad(){
 function projectDisplay(){
     let projects = document.getElementById('projects');
     projects.innerHTML = '';
-    let projectTitles = master.getProjects();
+    let projectTitles = master.getProjectTitles();
     projectTitles.forEach((title, index) => {
         const projectDiv = document.createElement("div");
         const projectTitle = document.createElement('p');
@@ -33,7 +33,7 @@ function projectDisplay(){
         projects.appendChild(projectDiv);
         
       });
-    console.log(master.getProjects());
+    console.log(master.getProjectTitles());
 }
 
 //Function to create new Projects and displaying
@@ -69,16 +69,16 @@ function deleteProject(index){
 //Need function for selecting current project
 //When a project is selected all todos created will be added to it
 function selectProject(index){
-    let projectTitles = master.getProjects();
+    let projectTitles = master.getProjectTitles();
     selectedProject = projectTitles[index];
     console.log(selectedProject);
-}
+};
 
 //Function for adding new todos 
 function addTodo(){
     let todoList = document.getElementById('list');
     let newTodoButton = document.createElement('button');
-
+    
 };
 
 export default pageLoad;
