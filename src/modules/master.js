@@ -1,4 +1,4 @@
-import Project from "./projects";
+
 
 //Contain the array of projects
 //Has default universal project that can access all todos
@@ -6,11 +6,14 @@ import Project from "./projects";
 
 
 //IMPORTANT FOR FUTURE ENDEAVOR TO FINISH THIS
-//Dont import this file into pageUpdate, only get the functions 
+//Dont import projects.js into pageUpdate, only get the functions 
 //from projects and use them somehow in here and then only import 
 //this master file into pageUpdate. Like for example addTodo from
 //the previous projects file can be ported over here and when used
 //it will still add todos.
+
+import Project from "./projects";
+
 const Master = () => {
     let projects = [];
     newProject('Universal');
@@ -31,7 +34,16 @@ const Master = () => {
         projects.splice(index, 1);
     };
 
-    return {newProject, getProjectTitles, deleteProject, getProjects};
+    function addTodoToProject(projectTitle, title, description, dueDate, priority){
+        const project = projects.find(project => project.getTitle() === projectTitle);
+
+        if (project) {
+            project.addTodo(title, description, dueDate, priority);
+        } else {
+            console.error(`Project "${projectTitle}" not found.`);
+        }
+    };
+    return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject};
 }
 
 export default Master;
