@@ -18,6 +18,7 @@ const Master = () => {
     let projects = [];
     newProject('Universal');
     addTodoToProject('Universal', 'Water Plants', 'water deez plantz', '2023-12-12', 'Urgent');
+    addTodoToProject('Universal', 'Water Pee', 'water deez plantz', '2023-12-12', 'Urgent');
 
     function getProjects(){
         return projects;

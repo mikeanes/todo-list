@@ -2,7 +2,7 @@ import Master from "./master";
 
 const master = Master();
 
-let selectedProject;
+let selectedProject = 'Universal';
 
 function pageLoad(){
     projectDisplay();
@@ -34,7 +34,25 @@ function projectDisplay(){
         
       });
     console.log(master.getProjectTitles());
-}
+};
+
+function displayTodos(){
+    let todoList = document.getElementById('list');
+    todoList.innerHTML = '';
+    let projectTodos = master.getTodos(selectedProject);
+    projectTodos.forEach((info, index) => {
+        const todoDiv = document.createElement('div');
+        const todoInfo = document.createElement('p');
+        todoDiv.classList.add('todo');
+        todoDiv.setAttribute("data-index", index);
+        todoInfo.textContent = info;
+
+        todoDiv.appendChild(todoInfo);
+        todoList.appendChild(todoDiv);
+    });
+    
+};
+
 
 //Function to create new Projects and displaying
 function createProject(){
@@ -71,6 +89,7 @@ function deleteProject(index){
 function selectProject(index){
     let projectTitles = master.getProjectTitles();
     selectedProject = projectTitles[index];
+    displayTodos();
     console.log(selectedProject);
 };
 
@@ -81,9 +100,5 @@ function addTodo(){
     
 };
 
-function displayTodos(){
-    let todoList = document.getElementById('list');
-    todoList.innerText = master.getTodos('Universal');
-};
 
 export default pageLoad;
