@@ -2,7 +2,7 @@ import Master from "./master";
 
 const master = Master();
 
-let selectedProject = 'Universal';
+let selectedProject = 'Default';
 
 function pageLoad(){
     projectDisplay();
@@ -10,7 +10,7 @@ function pageLoad(){
     displayTodos();
     addTodo();
 }
-//Function for getting the projects and displaying them
+
 function projectDisplay(){
     let projects = document.getElementById('projects');
     projects.innerHTML = '';
@@ -37,37 +37,6 @@ function projectDisplay(){
     console.log(master.getProjectTitles());
 };
 
-function displayTodos(){
-    let todoList = document.getElementById('list');
-    todoList.innerHTML = '';
-
-    let projectTodos = master.getTodos(selectedProject);
-
-    let todoModal = document.getElementById('todoModal');
-    let closeTodoModal = document.getElementById('closeTodoModal');
-    let newTodoButton = document.createElement('button');
-    newTodoButton.innerHTML = 'Add New Todo';
-
-    newTodoButton.addEventListener('click', () => {
-        todoModal.showModal();
-    });
-    closeTodoModal.addEventListener('click', () => {
-        todoModal.close();
-    });
-    projectTodos.forEach((info, index) => {
-        const todoDiv = document.createElement('div');
-        const todoInfo = document.createElement('p');
-        todoDiv.classList.add('todo');
-        todoDiv.setAttribute("data-index", index);
-        todoInfo.textContent = info;
-        todoDiv.appendChild(todoInfo);
-        todoList.appendChild(todoDiv);
-    });
-    todoList.appendChild(newTodoButton);
-};
-
-
-//Function to create new Projects and displaying
 function createProject(){
     let taskbar = document.getElementById('taskbar');
     const newProjectButton = document.createElement('button');
@@ -97,8 +66,6 @@ function deleteProject(index){
     projectDisplay();
 };
 
-//Need function for selecting current project
-//When a project is selected all todos created will be added to it
 function selectProject(index){
     let projectTitles = master.getProjectTitles();
     selectedProject = projectTitles[index];
@@ -106,7 +73,48 @@ function selectProject(index){
     console.log(selectedProject);
 };
 
-//Function for adding new todos 
+function displayTodos(){
+    let todoList = document.getElementById('list');
+    todoList.innerHTML = '';
+
+    let projectTodos;
+
+    if (selectedProject === 'Default') {
+        // If 'Default' is selected, retrieve todos from all projects
+        const projectTitles = master.getProjectTitles();
+        projectTodos = [];
+        projectTitles.forEach(title => {
+            const todos = master.getTodos(title);
+            projectTodos = projectTodos.concat(todos);
+        });
+    } else {
+        // Retrieve todos for the selected project
+        projectTodos = master.getTodos(selectedProject);
+    }
+
+    let todoModal = document.getElementById('todoModal');
+    let closeTodoModal = document.getElementById('closeTodoModal');
+    let newTodoButton = document.createElement('button');
+    newTodoButton.innerHTML = 'Add New Todo';
+
+    newTodoButton.addEventListener('click', () => {
+        todoModal.showModal();
+    });
+    closeTodoModal.addEventListener('click', () => {
+        todoModal.close();
+    });
+    projectTodos.forEach((info, index) => {
+        const todoDiv = document.createElement('div');
+        const todoInfo = document.createElement('p');
+        todoDiv.classList.add('todo');
+        todoDiv.setAttribute("data-index", index);
+        todoInfo.textContent = info;
+        todoDiv.appendChild(todoInfo);
+        todoList.appendChild(todoDiv);
+    });
+    todoList.appendChild(newTodoButton);
+};
+
 function addTodo(){
     let todoModal = document.getElementById('todoModal');
     let addTodo = document.getElementById('addTodo');
@@ -125,6 +133,5 @@ function addTodo(){
         console.log('todo added');
     });  
 };
-
 
 export default pageLoad;

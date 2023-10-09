@@ -1,24 +1,10 @@
-
-
-//Contain the array of projects
-//Has default universal project that can access all todos
-//Ability to create new projects
-
-
-//IMPORTANT FOR FUTURE ENDEAVOR TO FINISH THIS
-//Dont import projects.js into pageUpdate, only get the functions 
-//from projects and use them somehow in here and then only import 
-//this master file into pageUpdate. Like for example addTodo from
-//the previous projects file can be ported over here and when used
-//it will still add todos.
-
 import Project from "./projects";
 
 const Master = () => {
     let projects = [];
-    newProject('Universal');
-    addTodoToProject('Universal', 'Water Plants', 'water deez plantz', '2023-12-12', 'Urgent');
-    addTodoToProject('Universal', 'Water Pee', 'water deez plantz', '2023-12-12', 'Urgent');
+    newProject('Default');
+    newProject('Things to remember');
+    addTodoToProject('Things to remember', 'Peepeepoo', 'so smart', '0000-00-00', 'Urgent');
 
     function getProjects(){
         return projects;
