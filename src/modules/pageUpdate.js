@@ -8,6 +8,7 @@ function pageLoad(){
     projectDisplay();
     createProject();
     displayTodos();
+    addTodo();
 }
 //Function for getting the projects and displaying them
 function projectDisplay(){
@@ -39,18 +40,30 @@ function projectDisplay(){
 function displayTodos(){
     let todoList = document.getElementById('list');
     todoList.innerHTML = '';
+
     let projectTodos = master.getTodos(selectedProject);
+
+    let todoModal = document.getElementById('todoModal');
+    let closeTodoModal = document.getElementById('closeTodoModal');
+    let newTodoButton = document.createElement('button');
+    newTodoButton.innerHTML = 'Add New Todo';
+
+    newTodoButton.addEventListener('click', () => {
+        todoModal.showModal();
+    });
+    closeTodoModal.addEventListener('click', () => {
+        todoModal.close();
+    });
     projectTodos.forEach((info, index) => {
         const todoDiv = document.createElement('div');
         const todoInfo = document.createElement('p');
         todoDiv.classList.add('todo');
         todoDiv.setAttribute("data-index", index);
         todoInfo.textContent = info;
-
         todoDiv.appendChild(todoInfo);
         todoList.appendChild(todoDiv);
     });
-    
+    todoList.appendChild(newTodoButton);
 };
 
 
@@ -95,9 +108,22 @@ function selectProject(index){
 
 //Function for adding new todos 
 function addTodo(){
-    let todoList = document.getElementById('list');
-    let newTodoButton = document.createElement('button');
-    
+    let todoModal = document.getElementById('todoModal');
+    let addTodo = document.getElementById('addTodo');
+    let todoName = document.getElementById('todoName');
+    let todoDescription = document.getElementById('todoDescription');
+    function clearInputs(){
+        todoName.value = '';
+        todoDescription.value = '';
+    } 
+    addTodo.addEventListener('click', () => {
+        master.addTodoToProject(selectedProject, todoName.value, 
+            todoDescription.value, '0000-00-00', 'pending');
+        todoModal.close();
+        displayTodos();
+        clearInputs();
+        console.log('todo added');
+    });  
 };
 
 
