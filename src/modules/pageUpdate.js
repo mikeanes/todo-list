@@ -86,7 +86,6 @@ function displayTodos() {
     let projectTodos;
 
     if (selectedProject === 'Default') {
-        // If 'Default' is selected, retrieve todos from all projects
         const projectTitles = master.getProjectTitles();
         projectTodos = [];
         projectTitles.forEach(title => {
@@ -94,11 +93,9 @@ function displayTodos() {
             projectTodos = projectTodos.concat(todos);
         });
     } else {
-        // Retrieve todos for the selected project
         projectTodos = master.getTodos(selectedProject);
     }
 
-    // Add the "Add New Todo" button only if the selected project is not 'Default'
     if (selectedProject !== 'Default') {
         let todoModal = document.getElementById('todoModal');
         let closeTodoModal = document.getElementById('closeTodoModal');
@@ -126,24 +123,30 @@ function displayTodos() {
     });
 }
 
-
 function addTodo(){
     let todoModal = document.getElementById('todoModal');
     let addTodo = document.getElementById('addTodo');
     let todoName = document.getElementById('todoName');
     let todoDescription = document.getElementById('todoDescription');
+    let todoDate = document.getElementById('todoDate');
     function clearInputs(){
         todoName.value = '';
         todoDescription.value = '';
+        todoDate.value = '';
     } 
-    addTodo.addEventListener('click', () => {
+    const todoForm = document.getElementById('todoForm');
+    todoForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!todoForm.checkValidity()) {
+            event.preventDefault();
+            return;
+        }
         master.addTodoToProject(selectedProject, todoName.value, 
-            todoDescription.value, '0000-00-00', 'pending');
+            todoDescription.value, todoDate.value, 'pending');
         todoModal.close();
         displayTodos();
         clearInputs();
-        console.log('todo added');
-    });  
+});
 };
 
 export default pageLoad;
