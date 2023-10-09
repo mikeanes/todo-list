@@ -1,13 +1,13 @@
 import Master from "./master";
-import Project from "./projects";
 
 const master = Master();
-const project = Project();
+
 let selectedProject;
 
 function pageLoad(){
     projectDisplay();
     createProject();
+    displayTodos();
 }
 //Function for getting the projects and displaying them
 function projectDisplay(){
@@ -79,6 +79,11 @@ function addTodo(){
     let todoList = document.getElementById('list');
     let newTodoButton = document.createElement('button');
     
+};
+
+function displayTodos(){
+    let todoList = document.getElementById('list');
+    todoList.innerText = master.getTodos('Universal');
 };
 
 export default pageLoad;

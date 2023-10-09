@@ -17,6 +17,7 @@ import Project from "./projects";
 const Master = () => {
     let projects = [];
     newProject('Universal');
+    addTodoToProject('Universal', 'Water Plants', 'water deez plantz', '2023-12-12', 'Urgent');
 
     function getProjects(){
         return projects;
@@ -43,7 +44,17 @@ const Master = () => {
             console.error(`Project "${projectTitle}" not found.`);
         }
     };
-    return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject};
+
+    function getTodos(projectTitle){
+        const project = projects.find(project => project.getTitle() === projectTitle);
+        if (project) {
+            return project.getProjectTodos();
+        } else {
+            console.error(`Project "${projectTitle}" not found.`);
+        }
+    };
+    return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
+            , getTodos};
 }
 
 export default Master;
