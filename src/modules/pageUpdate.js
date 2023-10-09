@@ -11,31 +11,37 @@ function pageLoad(){
     addTodo();
 }
 
-function projectDisplay(){
+function projectDisplay() {
     let projects = document.getElementById('projects');
     projects.innerHTML = '';
     let projectTitles = master.getProjectTitles();
     projectTitles.forEach((title, index) => {
         const projectDiv = document.createElement("div");
         const projectTitle = document.createElement('p');
-        const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = 'Delete';
+
+        if (title !== 'Default') {
+            const deleteButton = document.createElement('button');
+            deleteButton.innerHTML = 'Delete';
+            deleteButton.addEventListener("click", () => {
+                deleteProject(index);
+            });
+            projectDiv.appendChild(deleteButton);
+        }
+
         projectDiv.classList.add('project');
         projectDiv.setAttribute("data-index", index);
         projectTitle.textContent = title;
         projectDiv.appendChild(projectTitle);
+
         projectTitle.addEventListener("click", () => {
             selectProject(index);
-          });
-        deleteButton.addEventListener("click", () => {
-            deleteProject(index);
         });
-        projectDiv.appendChild(deleteButton);
+
         projects.appendChild(projectDiv);
-        
-      });
+    });
     console.log(master.getProjectTitles());
 };
+
 
 function createProject(){
     let taskbar = document.getElementById('taskbar');
@@ -73,7 +79,7 @@ function selectProject(index){
     console.log(selectedProject);
 };
 
-function displayTodos(){
+function displayTodos() {
     let todoList = document.getElementById('list');
     todoList.innerHTML = '';
 
@@ -92,28 +98,34 @@ function displayTodos(){
         projectTodos = master.getTodos(selectedProject);
     }
 
-    let todoModal = document.getElementById('todoModal');
-    let closeTodoModal = document.getElementById('closeTodoModal');
-    let newTodoButton = document.createElement('button');
-    newTodoButton.innerHTML = 'Add New Todo';
+    // Add the "Add New Todo" button only if the selected project is not 'Default'
+    if (selectedProject !== 'Default') {
+        let todoModal = document.getElementById('todoModal');
+        let closeTodoModal = document.getElementById('closeTodoModal');
+        let newTodoButton = document.createElement('button');
+        newTodoButton.innerHTML = 'Add New Todo';
 
-    newTodoButton.addEventListener('click', () => {
-        todoModal.showModal();
-    });
-    closeTodoModal.addEventListener('click', () => {
-        todoModal.close();
-    });
+        newTodoButton.addEventListener('click', () => {
+            todoModal.showModal();
+        });
+        closeTodoModal.addEventListener('click', () => {
+            todoModal.close();
+        });
+
+        todoList.appendChild(newTodoButton);
+    }
+
     projectTodos.forEach((info, index) => {
         const todoDiv = document.createElement('div');
         const todoInfo = document.createElement('p');
         todoDiv.classList.add('todo');
-        todoDiv.setAttribute("data-index", index);
+        todoDiv.setAttribute('data-index', index);
         todoInfo.textContent = info;
         todoDiv.appendChild(todoInfo);
         todoList.appendChild(todoDiv);
     });
-    todoList.appendChild(newTodoButton);
-};
+}
+
 
 function addTodo(){
     let todoModal = document.getElementById('todoModal');

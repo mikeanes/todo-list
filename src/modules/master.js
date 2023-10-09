@@ -3,8 +3,8 @@ import Project from "./projects";
 const Master = () => {
     let projects = [];
     newProject('Default');
-    newProject('Things to remember');
-    addTodoToProject('Things to remember', 'Peepeepoo', 'so smart', '0000-00-00', 'Urgent');
+    newProject('Things');
+    addTodoToProject('Things', 'Peepeepoo', 'reeeeee', '0000-00-00', 'Urgent');
 
     function getProjects(){
         return projects;
