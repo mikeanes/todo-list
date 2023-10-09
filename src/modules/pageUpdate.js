@@ -125,14 +125,15 @@ function displayTodos() {
 
 function addTodo(){
     let todoModal = document.getElementById('todoModal');
-    let addTodo = document.getElementById('addTodo');
     let todoName = document.getElementById('todoName');
     let todoDescription = document.getElementById('todoDescription');
     let todoDate = document.getElementById('todoDate');
+    let todoPriority = document.getElementById('todoPriority');
     function clearInputs(){
         todoName.value = '';
         todoDescription.value = '';
         todoDate.value = '';
+        todoPriority.selectedIndex = 0;
     } 
     const todoForm = document.getElementById('todoForm');
     todoForm.addEventListener('submit', (event) => {
@@ -142,7 +143,7 @@ function addTodo(){
             return;
         }
         master.addTodoToProject(selectedProject, todoName.value, 
-            todoDescription.value, todoDate.value, 'pending');
+            todoDescription.value, todoDate.value, todoPriority.value);
         todoModal.close();
         displayTodos();
         clearInputs();
