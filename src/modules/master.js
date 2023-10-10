@@ -5,7 +5,7 @@ const Master = () => {
     newProject('Default');
     newProject('Things');
     addTodoToProject('Things', 'Peepeepoo', 'reeeeee', '0000-00-00', 'High');
-
+    
     function getProjects(){
         return projects;
     };

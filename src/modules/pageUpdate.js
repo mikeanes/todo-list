@@ -94,11 +94,11 @@ function displayTodos() {
         const projectTitles = master.getProjectTitles();
         projectTodos = [];
         projectTitles.forEach(title => {
-            const todos = master.getTodos(title);
+            const todos = master.getTodoElements(title);
             projectTodos = projectTodos.concat(todos);
         });
     } else {
-        projectTodos = master.getTodos(selectedProject);
+        projectTodos = master.getTodoElements(selectedProject);
     }
 
     if (selectedProject !== 'Default') {
@@ -119,11 +119,8 @@ function displayTodos() {
 
     projectTodos.forEach((info, index) => {
         const todoDiv = document.createElement('div');
-        const todoInfo = document.createElement('p');
-        todoDiv.classList.add('todo');
         todoDiv.setAttribute('data-index', index);
-        todoInfo.textContent = info;
-        todoDiv.appendChild(todoInfo);
+        todoDiv.appendChild(info);
         todoList.appendChild(todoDiv);
     });
 }
