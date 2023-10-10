@@ -32,8 +32,35 @@ const Todo = (title, description, dueDate, priority) => {
     function toString(){
         return _title + ' ' + _description + ' ' + _dueDate + ' ' + _priority;
     };
+    
+    function todoElement(){
+        const todoDiv = document.createElement('div');
+        todoDiv.classList.add('todo');
+
+        const titleElement = document.createElement('p');
+        titleElement.textContent = `Todo Title: ${_title}`;
+        titleElement.classList.add('todo-title');
+
+        const descriptionElement = document.createElement('p');
+        descriptionElement.textContent = `Description: ${_description}`;
+        descriptionElement.classList.add('todo-description');
+
+        const dateElement = document.createElement('p');
+        dateElement.textContent = `Due Date: ${_dueDate}`;
+        dateElement.classList.add('todo-date');
+
+        const priorityElement = document.createElement('p');
+        priorityElement.textContent = `Priority: ${_priority}`;
+        priorityElement.classList.add('todo-priority');
+
+        todoDiv.appendChild(titleElement);
+        todoDiv.appendChild(dateElement);
+        todoDiv.appendChild(priorityElement);
+
+        return todoDiv;
+    };
     return{getTitle, getDescription, getDueDate, getPriority,
-         setTitle, setDescription, setDueDate, setPriority, toString};
+         setTitle, setDescription, setDueDate, setPriority, toString, todoElement};
 };
 
 export default Todo;

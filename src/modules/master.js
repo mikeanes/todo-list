@@ -40,8 +40,17 @@ const Master = () => {
             console.error(`Project "${projectTitle}" not found.`);
         }
     };
+    function getTodoElements(projectTitle){
+        const project = projects.find(project => project.getTitle() === projectTitle);
+        if (project) {
+            return project.todoElement();
+        } else {
+            console.error(`Project "${projectTitle}" not found.`);
+        }
+    };
+
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
-            , getTodos};
+            , getTodos, getTodoElements};
 }
 
 export default Master;

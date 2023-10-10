@@ -15,12 +15,16 @@ const Project = (title) => {
     
     function addTodo(title, description, dueDate, priority){
         projectTodos.push(Todo(title, description, dueDate, priority));
-    }
+    };
+
     function getProjectTodos(){
         return projectTodos.map(todos => todos.toString());
-    }
+    };
 
-    return{setTitle, getTitle, addTodo, getProjectTodos};
+    function todoElement(){
+        return projectTodos.map(todos => todos.todoElement());
+    }
+    return{setTitle, getTitle, addTodo, getProjectTodos, todoElement};
 }
 
 export default Project;
