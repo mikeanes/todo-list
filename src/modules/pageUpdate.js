@@ -21,11 +21,14 @@ function projectDisplay() {
 
         if (title !== 'Default') {
             const deleteButton = document.createElement('button');
+            const renameButton = document.createElement('button');
             deleteButton.innerHTML = 'Delete';
+            renameButton.innerHTML = 'Rename';
             deleteButton.addEventListener("click", () => {
                 deleteProject(index);
             });
             projectDiv.appendChild(deleteButton);
+            projectDiv.appendChild(renameButton);
         }
 
         projectDiv.classList.add('project');
@@ -73,8 +76,8 @@ function deleteProject(index){
     projectDisplay();
     if (selectedProject === projectTitles[index]){
         selectedProject = 'Default';
-        displayTodos();
     }
+    displayTodos();
 };
 
 function selectProject(index){

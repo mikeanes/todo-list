@@ -32,7 +32,7 @@ const Todo = (title, description, dueDate, priority) => {
     function toString(){
         return _title + ' ' + _description + ' ' + _dueDate + ' ' + _priority;
     };
-    
+
     function todoElement(){
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
@@ -54,6 +54,7 @@ const Todo = (title, description, dueDate, priority) => {
         priorityElement.classList.add('todo-priority');
 
         todoDiv.appendChild(titleElement);
+        todoDiv.appendChild(descriptionElement);
         todoDiv.appendChild(dateElement);
         todoDiv.appendChild(priorityElement);
 
