@@ -68,8 +68,13 @@ function createProject(){
 }
 
 function deleteProject(index){
+    let projectTitles = master.getProjectTitles();
     master.deleteProject(index);
     projectDisplay();
+    if (selectedProject === projectTitles[index]){
+        selectedProject = 'Default';
+        displayTodos();
+    }
 };
 
 function selectProject(index){
