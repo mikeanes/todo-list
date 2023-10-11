@@ -22,6 +22,16 @@ const Master = () => {
         projects.splice(index, 1);
     };
 
+    function renameProject(oldTitle, newTitle){
+        console.log(`renameProject called with oldTitle: ${oldTitle}, newTitle: ${newTitle}`);
+        const project = projects.find(project => project.getTitle() === oldTitle);
+        if (project) {
+            project.setTitle(newTitle);
+        } else {
+            console.error(`Project "${oldTitle}" not found.`);
+        }
+    };
+
     function addTodoToProject(projectTitle, title, description, dueDate, priority){
         const project = projects.find(project => project.getTitle() === projectTitle);
 
@@ -50,7 +60,7 @@ const Master = () => {
     };
 
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
-            , getTodos, getTodoElements};
+            , getTodos, getTodoElements, renameProject};
 }
 
 export default Master;
