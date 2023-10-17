@@ -3,13 +3,32 @@ import Master from "./master";
 const master = Master();
 
 let selectedProject = 'Default';
+let projectForRename;
 
 function pageLoad(){
     projectDisplay();
     createProject();
     displayTodos();
     addTodo();
+    renameModalFunction();
 }
+const renameModal = document.getElementById('renameModal');
+const closeRenameModal = document.getElementById('closeRenameModal');
+const confirmRename = document.getElementById('renameButton');
+const renameInput = document.getElementById('renameProject');
+
+function renameModalFunction(){
+    confirmRename.addEventListener("click", () => {
+        console.log('i have an event listener');
+        renameProject(projectForRename, renameInput.value);
+        projectForRename = '';
+        renameModal.close();
+        projectDisplay();
+    });
+    closeRenameModal.addEventListener("click", () => {
+        renameModal.close();
+    });
+};
 
 function projectDisplay() {
     let projects = document.getElementById('projects');
@@ -22,10 +41,7 @@ function projectDisplay() {
         if (title !== 'Default') {
             const deleteButton = document.createElement('button');
             const renameButton = document.createElement('button');
-            const renameModal = document.getElementById('renameModal');
-            const closeRenameModal = document.getElementById('closeRenameModal');
-            const confirmRename = document.getElementById('renameButton');
-            const renameInput = document.getElementById('renameProject');
+            
             deleteButton.innerHTML = 'Delete';
             renameButton.innerHTML = 'Rename';
             deleteButton.addEventListener("click", () => {
@@ -35,15 +51,9 @@ function projectDisplay() {
             renameButton.addEventListener("click", () => {
                 renameModal.showModal();
                 renameInput.value = projectTitles[index];
+                projectForRename = projectTitles[index];
             });
-            confirmRename.addEventListener("click", () => {
-                console.log('i have an event listener');
-                renameProject(projectTitles[index], renameInput.value);
-                renameModal.close();
-            });
-            closeRenameModal.addEventListener("click", () => {
-                renameModal.close();
-            });
+            
             ////////////////////////////////////////////////////////
             projectDiv.appendChild(deleteButton);
             projectDiv.appendChild(renameButton);
@@ -65,7 +75,6 @@ function projectDisplay() {
 /////////////////////////////////////////////////////
 function renameProject(oldTitle, newTitle){
     master.renameProject(oldTitle, newTitle);
-    projectDisplay();
 };
 /////////////////////////////////////////////////////
 
