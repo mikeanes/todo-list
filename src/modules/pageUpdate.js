@@ -69,6 +69,13 @@ function deleteProject(index){
     displayTodos();
 };
 
+function deleteTodo(projectTitle, todoIndex){
+
+    master.removeTodoFromProject(projectTitle, todoIndex);
+
+    displayTodos();
+};
+
 function selectProject(index){
     let projectTitles = master.getProjectTitles();
     selectedProject = projectTitles[index];
@@ -105,11 +112,11 @@ function displayTodos() {
     projectTodos = [];
     const projectTitles = master.getProjectTitles();
     const newTodoButton = document.createElement('button');
-        newTodoButton.innerHTML = 'Add New Todo';
-
-        newTodoButton.addEventListener('click', () => {
-            todoModal.showModal();
-        });
+    newTodoButton.innerHTML = 'Add New Todo';
+    
+    newTodoButton.addEventListener('click', () => {
+        todoModal.showModal();
+    });
     closeTodoModal.addEventListener('click', () => {
         todoModal.close();
     });
@@ -143,7 +150,7 @@ function displayTodos() {
             todoPriority.selectedIndex = 0;
         });
         deleteButton.addEventListener("click", () => {
-
+            deleteTodo(selectedProject, index); 
         });
 
         todoDiv.appendChild(info);

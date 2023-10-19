@@ -17,6 +17,12 @@ const Project = (title) => {
         projectTodos.push(Todo(title, description, dueDate, priority));
     };
 
+    function removeTodo(index) {
+        if (index >= 0 && index < projectTodos.length) {
+            projectTodos.splice(index, 1);
+        }
+    };
+
     function getProjectTodos(){
         return projectTodos.map(todos => todos.toString());
     };
@@ -24,7 +30,7 @@ const Project = (title) => {
     function todoElement(){
         return projectTodos.map(todos => todos.todoElement());
     }
-    return{setTitle, getTitle, addTodo, getProjectTodos, todoElement};
+    return{setTitle, getTitle, addTodo, getProjectTodos, todoElement, removeTodo};
 }
 
 export default Project;

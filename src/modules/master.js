@@ -42,6 +42,16 @@ const Master = () => {
         }
     };
 
+    function removeTodoFromProject(projectTitle, todoIndex) {
+        const project = projects.find(project => project.getTitle() === projectTitle);
+
+        if (project) {
+            project.removeTodo(todoIndex);
+        } else {
+            console.error(`Project "${projectTitle}" not found.`);
+        }
+    };
+
     function getTodos(projectTitle){
         const project = projects.find(project => project.getTitle() === projectTitle);
         if (project) {
@@ -60,7 +70,7 @@ const Master = () => {
     };
 
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
-            , getTodos, getTodoElements, renameProject};
+            , getTodos, getTodoElements, renameProject, removeTodoFromProject};
 }
 
 export default Master;

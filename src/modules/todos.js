@@ -5,6 +5,8 @@ const Todo = (title, description, dueDate, priority) => {
     let _dueDate = dueDate;
     let _priority = priority;
 
+    //create a unique identifier for every todo that is made here and then access that to delete
+
     function getTitle(){
         return _title;
     };
