@@ -1,12 +1,22 @@
-const Todo = (title, description, dueDate, priority) => {
+let count = 0;
+
+const Todo = (title, description, dueDate, priority, projectName) => {
 
     let _title = title;
     let _description = description;
     let _dueDate = dueDate;
     let _priority = priority;
+    let _id = generateID();
+    let _projectName = projectName;
 
     //create a unique identifier for every todo that is made here and then access that to delete
 
+    function getID(){
+        return _id;
+    };
+    function generateID(){
+        return count++;
+    };
     function getTitle(){
         return _title;
     };
@@ -30,9 +40,6 @@ const Todo = (title, description, dueDate, priority) => {
     };
     function setPriority(value){
         _priority = value;
-    };
-    function toString(){
-        return _title + ' ' + _description + ' ' + _dueDate + ' ' + _priority;
     };
 
     function todoElement(){
@@ -59,11 +66,11 @@ const Todo = (title, description, dueDate, priority) => {
         todoDiv.appendChild(descriptionElement);
         todoDiv.appendChild(dateElement);
         todoDiv.appendChild(priorityElement);
-
+        
         return todoDiv;
     };
     return{getTitle, getDescription, getDueDate, getPriority,
-         setTitle, setDescription, setDueDate, setPriority, toString, todoElement};
+         setTitle, setDescription, setDueDate, setPriority, todoElement, getID};
 };
 
 export default Todo;

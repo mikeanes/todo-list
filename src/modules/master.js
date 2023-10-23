@@ -52,14 +52,6 @@ const Master = () => {
         }
     };
 
-    function getTodos(projectTitle){
-        const project = projects.find(project => project.getTitle() === projectTitle);
-        if (project) {
-            return project.getProjectTodos();
-        } else {
-            console.error(`Project "${projectTitle}" not found.`);
-        }
-    };
     function getTodoElements(projectTitle){
         const project = projects.find(project => project.getTitle() === projectTitle);
         if (project) {
@@ -70,7 +62,7 @@ const Master = () => {
     };
 
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
-            , getTodos, getTodoElements, renameProject, removeTodoFromProject};
+            , getTodoElements, renameProject, removeTodoFromProject};
 }
 
 export default Master;

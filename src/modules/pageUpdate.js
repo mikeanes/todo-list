@@ -76,6 +76,9 @@ function deleteTodo(projectTitle, todoIndex){
     displayTodos();
 };
 
+
+
+
 function selectProject(index){
     let projectTitles = master.getProjectTitles();
     selectedProject = projectTitles[index];
@@ -140,7 +143,7 @@ function displayTodos() {
         const deleteButton = document.createElement('button');
         editButton.innerHTML = 'Edit';
         deleteButton.innerHTML = 'Delete';
-        todoDiv.setAttribute('data-index', index);
+        todoDiv.setAttribute('data-index', index);    
 
         editButton.addEventListener("click", () => {
             todoModal.showModal();

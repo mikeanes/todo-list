@@ -14,7 +14,7 @@ const Project = (title) => {
     };
     
     function addTodo(title, description, dueDate, priority){
-        projectTodos.push(Todo(title, description, dueDate, priority));
+        projectTodos.push(Todo(title, description, dueDate, priority, getTitle()));
     };
 
     function removeTodo(index) {
