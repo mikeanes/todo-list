@@ -29,7 +29,7 @@ const Project = (title) => {
 
     function todoElement(){
         return projectTodos.map(todos => todos.todoElement());
-    }
+    };
     return{setTitle, getTitle, addTodo, getProjectTodos, todoElement, removeTodo};
 }
 

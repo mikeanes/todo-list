@@ -1,22 +1,11 @@
-let count = 0;
-
 const Todo = (title, description, dueDate, priority, projectName) => {
 
     let _title = title;
     let _description = description;
     let _dueDate = dueDate;
     let _priority = priority;
-    let _id = generateID();
     let _projectName = projectName;
 
-    //create a unique identifier for every todo that is made here and then access that to delete
-
-    function getID(){
-        return _id;
-    };
-    function generateID(){
-        return count++;
-    };
     function getTitle(){
         return _title;
     };
@@ -29,6 +18,9 @@ const Todo = (title, description, dueDate, priority, projectName) => {
     function getPriority(){
         return _priority;
     };
+    function getProjectName(){
+        return _projectName;
+    };
     function setTitle(value){
         _title = value;
     };
@@ -40,6 +32,9 @@ const Todo = (title, description, dueDate, priority, projectName) => {
     };
     function setPriority(value){
         _priority = value;
+    };
+    function setProjectName(value){
+        _projectName = value;
     };
 
     function todoElement(){
@@ -61,16 +56,17 @@ const Todo = (title, description, dueDate, priority, projectName) => {
         const priorityElement = document.createElement('p');
         priorityElement.textContent = `Priority: ${_priority}`;
         priorityElement.classList.add('todo-priority');
-
+        
         todoDiv.appendChild(titleElement);
         todoDiv.appendChild(descriptionElement);
         todoDiv.appendChild(dateElement);
         todoDiv.appendChild(priorityElement);
-        
+
         return todoDiv;
+        
     };
     return{getTitle, getDescription, getDueDate, getPriority,
-         setTitle, setDescription, setDueDate, setPriority, todoElement, getID};
+         setTitle, setDescription, setDueDate, setPriority, todoElement, getProjectName, setProjectName};
 };
 
 export default Todo;

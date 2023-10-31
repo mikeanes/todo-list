@@ -70,11 +70,12 @@ function deleteProject(index){
 };
 
 function deleteTodo(projectTitle, todoIndex){
-
+    
     master.removeTodoFromProject(projectTitle, todoIndex);
 
     displayTodos();
 };
+
 
 
 

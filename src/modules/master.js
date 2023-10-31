@@ -60,6 +60,7 @@ const Master = () => {
             console.error(`Project "${projectTitle}" not found.`);
         }
     };
+    
 
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
             , getTodoElements, renameProject, removeTodoFromProject};
