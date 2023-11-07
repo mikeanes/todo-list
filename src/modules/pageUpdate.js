@@ -158,8 +158,10 @@ function displayTodos() {
         });
 
         todoDiv.appendChild(info);
+        if (selectedProject !== 'Default'){
         todoDiv.appendChild(editButton);
         todoDiv.appendChild(deleteButton);
+        }
         todoList.appendChild(todoDiv);
     });
 };
