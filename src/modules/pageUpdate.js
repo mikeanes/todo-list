@@ -70,15 +70,9 @@ function deleteProject(index){
 };
 
 function deleteTodo(projectTitle, todoIndex){
-    
     master.removeTodoFromProject(projectTitle, todoIndex);
-
     displayTodos();
 };
-
-
-
-
 
 function selectProject(index){
     let projectTitles = master.getProjectTitles();
@@ -107,6 +101,10 @@ function addTodo(){
         displayTodos();
         clearInputs();
 });
+};
+
+function editTodo(){
+
 };
 
 function displayTodos() {
@@ -148,10 +146,16 @@ function displayTodos() {
 
         editButton.addEventListener("click", () => {
             todoModal.showModal();
-            todoName.value = '';
-            todoDescription.value = '';
-            todoDate.value = '';
-            todoPriority.selectedIndex = 0;
+            const todoInfo = master.getTodoInfo(selectedProject, index);
+            todoName.value = todoInfo.title;
+            todoDescription.value = todoInfo.description;
+            todoDate.value = todoInfo.dueDate;
+            const priorityOptions = todoPriority.options;
+            for (let i = 0; i < priorityOptions.length; i++) {
+                if (priorityOptions[i].value === todoInfo.priority) {
+                    priorityOptions[i].selected = true;
+                }
+            }
         });
         deleteButton.addEventListener("click", () => {
             deleteTodo(selectedProject, index); 

@@ -4,8 +4,8 @@ const Master = () => {
     let projects = [];
     newProject('Default');
     newProject('Things');
-    addTodoToProject('Things', 'Peepeepoo', 'reeeeee', '0000-00-00', 'High');
-    addTodoToProject('Things', 'ShitFart', 'reee', '0000-00-00', 'High');
+    addTodoToProject('Things', 'Peepeepoo', 'reeeeee', '1999-12-01', 'High');
+    addTodoToProject('Things', 'ShitFart', 'reee', '1992-10-09', 'High');
 
     
     
@@ -45,6 +45,29 @@ const Master = () => {
         }
     };
 
+    function updateTodoInProject(projectTitle, todoIndex, title, description, dueDate, priority) {
+        const project = projects.find(project => project.getTitle() === projectTitle);
+    
+        if (project) {
+            project.updateTodo(todoIndex, title, description, dueDate, priority);
+        } else {
+            console.error(`Project "${projectTitle}" not found.`);
+        }
+    };    
+
+    function getTodoInfo(projectTitle, todoIndex) {
+        const project = projects.find(project => project.getTitle() === projectTitle);
+    
+        if (project) {
+            const todo = project.getTodoInfo(todoIndex);
+            return todo;
+        } else {
+            console.error(`Project "${projectTitle}" not found.`);
+            return null;
+        }
+    }
+    
+
     function removeTodoFromProject(projectTitle, todoIndex) {
         const project = projects.find(project => project.getTitle() === projectTitle);
 
@@ -63,10 +86,12 @@ const Master = () => {
             console.error(`Project "${projectTitle}" not found.`);
         }
     };
+
+
     
   
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
-            , getTodoElements, renameProject, removeTodoFromProject};
+            , getTodoElements, renameProject, removeTodoFromProject, updateTodoInProject, getTodoInfo};
 }
 
 export default Master;

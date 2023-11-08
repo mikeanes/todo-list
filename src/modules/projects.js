@@ -24,6 +24,28 @@ const Project = (title) => {
         }
     };
 
+    function updateTodo(index, title, description, dueDate, priority) {
+        if (index >= 0 && index < projectTodos.length) {
+            projectTodos[index].setTitle(title);
+            projectTodos[index].setDescription(description);
+            projectTodos[index].setDueDate(dueDate);
+            projectTodos[index].setPriority(priority);
+        }
+    };
+
+    function getTodoInfo(index) {
+        if (index >= 0 && index < projectTodos.length) {
+            const todo = projectTodos[index];
+            return {
+                title: todo.getTitle(),
+                description: todo.getDescription(),
+                dueDate: todo.getDueDate(),
+                priority: todo.getPriority(),
+            };
+        }
+    };
+    
+
     function getProjectTodos(){
         return projectTodos.map(todos => todos.toString());
     };
@@ -32,7 +54,7 @@ const Project = (title) => {
         return projectTodos.map(todos => todos.todoElement());
     };
     
-    return{setTitle, getTitle, addTodo, getProjectTodos, todoElement, removeTodo};
+    return{setTitle, getTitle, addTodo, getProjectTodos, todoElement, removeTodo, updateTodo, getTodoInfo};
 }
 
 export default Project;
