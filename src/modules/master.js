@@ -65,9 +65,8 @@ const Master = () => {
             console.error(`Project "${projectTitle}" not found.`);
             return null;
         }
-    }
+    };
     
-
     function removeTodoFromProject(projectTitle, todoIndex) {
         const project = projects.find(project => project.getTitle() === projectTitle);
 

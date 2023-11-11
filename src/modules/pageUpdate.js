@@ -4,12 +4,15 @@ const master = Master();
 
 let selectedProject = 'Default';
 let projectForRename;
+let selectedTodoIndex;
 const renameModal = document.getElementById('renameModal');
 const closeRenameModal = document.getElementById('closeRenameModal');
 const confirmRename = document.getElementById('renameButton');
 const renameInput = document.getElementById('renameProject');
 const todoModal = document.getElementById('todoModal');
 const closeTodoModal = document.getElementById('closeTodoModal');
+const updateTodoButton = document.getElementById('updateTodo');
+const addTodoButton = document.getElementById('addTodo');
 let todoName = document.getElementById('todoName');
 let todoDescription = document.getElementById('todoDescription');
 let todoDate = document.getElementById('todoDate');
@@ -21,7 +24,7 @@ function pageLoad(){
     displayTodos();
     addTodo();
     renameModalFunction();
-}
+};
 
 function renameModalFunction(){
     confirmRename.addEventListener("click", () => {
@@ -103,9 +106,6 @@ function addTodo(){
 });
 };
 
-function editTodo(){
-
-};
 
 function displayTodos() {
     let todoList = document.getElementById('list');
@@ -117,9 +117,19 @@ function displayTodos() {
     newTodoButton.innerHTML = 'Add New Todo';
     
     newTodoButton.addEventListener('click', () => {
+        updateTodoButton.style.display = 'none';
+        addTodoButton.style.display = '';
+        clearInputs();
         todoModal.showModal();
     });
     closeTodoModal.addEventListener('click', () => {
+        todoModal.close();
+    });
+
+    updateTodoButton.addEventListener('click', () => {
+        master.updateTodoInProject(selectedProject, selectedTodoIndex, todoName.value, 
+            todoDescription.value, todoDate.value, todoPriority.value);
+        displayTodos();
         todoModal.close();
     });
 
@@ -145,6 +155,9 @@ function displayTodos() {
         todoDiv.setAttribute('data-index', index);    
 
         editButton.addEventListener("click", () => {
+            selectedTodoIndex = index;
+            updateTodoButton.style.display = '';
+            addTodoButton.style.display = 'none';
             todoModal.showModal();
             const todoInfo = master.getTodoInfo(selectedProject, index);
             todoName.value = todoInfo.title;
