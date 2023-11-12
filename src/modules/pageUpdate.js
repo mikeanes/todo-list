@@ -106,7 +106,6 @@ function addTodo(){
 });
 };
 
-
 function displayTodos() {
     let todoList = document.getElementById('list');
     todoList.innerHTML = '';
@@ -153,13 +152,18 @@ function displayTodos() {
         editButton.innerHTML = 'Edit';
         deleteButton.innerHTML = 'Delete';
         todoDiv.setAttribute('data-index', index);    
+        const todoInfo = master.getTodoInfo(selectedProject, index);
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'completed' + index;
+        
 
         editButton.addEventListener("click", () => {
             selectedTodoIndex = index;
             updateTodoButton.style.display = '';
             addTodoButton.style.display = 'none';
             todoModal.showModal();
-            const todoInfo = master.getTodoInfo(selectedProject, index);
+            
             todoName.value = todoInfo.title;
             todoDescription.value = todoInfo.description;
             todoDate.value = todoInfo.dueDate;
@@ -175,6 +179,8 @@ function displayTodos() {
         });
 
         todoDiv.appendChild(info);
+        todoDiv.appendChild(checkbox);
+        
         if (selectedProject !== 'Default'){
         todoDiv.appendChild(editButton);
         todoDiv.appendChild(deleteButton);

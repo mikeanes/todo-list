@@ -1,10 +1,19 @@
-const Todo = (title, description, dueDate, priority, projectName) => {
+const Todo = (title, description, dueDate, priority) => {
 
     let _title = title;
     let _description = description;
     let _dueDate = dueDate;
     let _priority = priority;
-    let _projectName = projectName;
+
+    let completed = false;
+    let _completed = completed;
+
+    function getCompleted(){
+        return _completed;
+    };
+    function setCompleted(value){
+        _completed = value;
+    };
 
     function getTitle(){
         return _title;
@@ -33,13 +42,18 @@ const Todo = (title, description, dueDate, priority, projectName) => {
     function setPriority(value){
         _priority = value;
     };
-    function setProjectName(value){
-        _projectName = value;
-    };
+    
 
     function todoElement(){
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
+
+        // const completedCheckmark = document.createElement('input');
+        // completedCheckmark.type = 'checkbox';
+        // completedCheckmark.id = 'completedCheckmark';
+        // if (getCompleted()){
+        //     completedCheckmark.checked = true;
+        // };
 
         const titleElement = document.createElement('p');
         titleElement.textContent = `Todo Title: ${_title}`;
@@ -61,12 +75,14 @@ const Todo = (title, description, dueDate, priority, projectName) => {
         todoDiv.appendChild(descriptionElement);
         todoDiv.appendChild(dateElement);
         todoDiv.appendChild(priorityElement);
+        //todoDiv.appendChild(completedCheckmark);
 
         return todoDiv;
         
     };
     return{getTitle, getDescription, getDueDate, getPriority,
-         setTitle, setDescription, setDueDate, setPriority, todoElement, getProjectName, setProjectName};
+         setTitle, setDescription, setDueDate, setPriority, todoElement, 
+         getProjectName, getCompleted, setCompleted};
 };
 
 export default Todo;

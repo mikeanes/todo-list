@@ -15,7 +15,7 @@ const Project = (title) => {
     };
     
     function addTodo(title, description, dueDate, priority){
-        projectTodos.push(Todo(title, description, dueDate, priority, getTitle()));
+        projectTodos.push(Todo(title, description, dueDate, priority));
     };
 
     function removeTodo(index) {
@@ -24,12 +24,13 @@ const Project = (title) => {
         }
     };
 
-    function updateTodo(index, title, description, dueDate, priority) {
+    function updateTodo(index, title, description, dueDate, priority, completed) {
         if (index >= 0 && index < projectTodos.length) {
             projectTodos[index].setTitle(title);
             projectTodos[index].setDescription(description);
             projectTodos[index].setDueDate(dueDate);
             projectTodos[index].setPriority(priority);
+            projectTodos[index].setCompleted(completed);
         }
     };
 
@@ -41,6 +42,7 @@ const Project = (title) => {
                 description: todo.getDescription(),
                 dueDate: todo.getDueDate(),
                 priority: todo.getPriority(),
+                completed: todo.getCompleted()
             };
         }
     };

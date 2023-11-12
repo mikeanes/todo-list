@@ -45,11 +45,11 @@ const Master = () => {
         }
     };
 
-    function updateTodoInProject(projectTitle, todoIndex, title, description, dueDate, priority) {
+    function updateTodoInProject(projectTitle, todoIndex, title, description, dueDate, priority, completed) {
         const project = projects.find(project => project.getTitle() === projectTitle);
     
         if (project) {
-            project.updateTodo(todoIndex, title, description, dueDate, priority);
+            project.updateTodo(todoIndex, title, description, dueDate, priority, completed);
         } else {
             console.error(`Project "${projectTitle}" not found.`);
         }
