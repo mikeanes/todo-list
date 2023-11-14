@@ -48,12 +48,22 @@ const Todo = (title, description, dueDate, priority) => {
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
 
-        // const completedCheckmark = document.createElement('input');
-        // completedCheckmark.type = 'checkbox';
-        // completedCheckmark.id = 'completedCheckmark';
-        // if (getCompleted()){
-        //     completedCheckmark.checked = true;
-        // };
+        const completedCheckmark = document.createElement('input');
+        completedCheckmark.type = 'checkbox';
+        completedCheckmark.id = 'completedCheckmark';
+        completedCheckmark.addEventListener('change', () => {
+            if(completedCheckmark.checked === true){
+                setCompleted(true);
+            }else{
+                setCompleted(false);
+            }
+        })
+        if (getCompleted()){
+            completedCheckmark.checked = true;
+        }else{
+            completedCheckmark.checked = false;
+        }
+
 
         const titleElement = document.createElement('p');
         titleElement.textContent = `Todo Title: ${_title}`;
@@ -75,7 +85,7 @@ const Todo = (title, description, dueDate, priority) => {
         todoDiv.appendChild(descriptionElement);
         todoDiv.appendChild(dateElement);
         todoDiv.appendChild(priorityElement);
-        //todoDiv.appendChild(completedCheckmark);
+        todoDiv.appendChild(completedCheckmark);
 
         return todoDiv;
         

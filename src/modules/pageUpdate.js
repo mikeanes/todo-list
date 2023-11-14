@@ -152,12 +152,7 @@ function displayTodos() {
         editButton.innerHTML = 'Edit';
         deleteButton.innerHTML = 'Delete';
         todoDiv.setAttribute('data-index', index);    
-        const todoInfo = master.getTodoInfo(selectedProject, index);
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = 'completed' + index;
         
-
         editButton.addEventListener("click", () => {
             selectedTodoIndex = index;
             updateTodoButton.style.display = '';
@@ -179,7 +174,6 @@ function displayTodos() {
         });
 
         todoDiv.appendChild(info);
-        todoDiv.appendChild(checkbox);
         
         if (selectedProject !== 'Default'){
         todoDiv.appendChild(editButton);
