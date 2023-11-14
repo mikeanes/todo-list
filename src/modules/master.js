@@ -2,7 +2,7 @@ import Project from "./projects";
 
 const Master = () => {
     let projects = [];
-    newProject('Default');
+    newProject('All Todos');
     newProject('Things');
     addTodoToProject('Things', 'Peepeepoo', 'reeeeee', '1999-12-01', 'High');
     addTodoToProject('Things', 'ShitFart', 'reee', '1992-10-09', 'High');

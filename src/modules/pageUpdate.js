@@ -2,7 +2,7 @@ import Master from "./master";
 
 const master = Master();
 
-let selectedProject = 'Default';
+let selectedProject = 'All Todos';
 let projectForRename;
 let selectedTodoIndex;
 const renameModal = document.getElementById('renameModal');
@@ -67,7 +67,7 @@ function deleteProject(index){
     master.deleteProject(index);
     projectDisplay();
     if (selectedProject === projectTitles[index]){
-        selectedProject = 'Default';
+        selectedProject = 'All Todos';
     }
     displayTodos();
 };
@@ -132,7 +132,7 @@ function displayTodos() {
         todoModal.close();
     });
 
-    if (selectedProject === 'Default') {
+    if (selectedProject === 'All Todos') {
         projectTitles.forEach(title => {
             const todos = master.getTodoElements(title);
             projectTodos = projectTodos.concat(todos);
@@ -141,7 +141,7 @@ function displayTodos() {
         projectTodos = master.getTodoElements(selectedProject);
     }
 
-    if (selectedProject !== 'Default') {
+    if (selectedProject !== 'All Todos') {
         todoList.appendChild(newTodoButton);
     }
 
@@ -175,7 +175,7 @@ function displayTodos() {
 
         todoDiv.appendChild(info);
         
-        if (selectedProject !== 'Default'){
+        if (selectedProject !== 'All Todos'){
         todoDiv.appendChild(editButton);
         todoDiv.appendChild(deleteButton);
         }
@@ -191,7 +191,7 @@ function projectDisplay() {
         const projectDiv = document.createElement("div");
         const projectTitle = document.createElement('p');
 
-        if (title !== 'Default') {
+        if (title !== 'All Todos') {
             const deleteButton = document.createElement('button');
             const renameButton = document.createElement('button');
             
