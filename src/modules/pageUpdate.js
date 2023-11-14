@@ -184,6 +184,12 @@ function displayTodos() {
 };
 
 function projectDisplay() {
+    const projectsHeader = document.createElement('h2');
+    projectsHeader.innerText = 'Projects';
+    projectsHeader.classList.add('projectsHeader');
+    const allTodoIcon = document.createElement('i');
+    allTodoIcon.classList.add('fa');
+    allTodoIcon.classList.add('fa-house');
     let projects = document.getElementById('projects');
     projects.innerHTML = '';
     let projectTitles = master.getProjectTitles();
@@ -209,11 +215,17 @@ function projectDisplay() {
             
             projectDiv.appendChild(deleteButton);
             projectDiv.appendChild(renameButton);
+        }else{
+            projectDiv.classList.add('allTodos');
+            projectDiv.appendChild(projectsHeader);
         }
-
+        
         projectDiv.classList.add('project');
         projectDiv.setAttribute("data-index", index);
         projectTitle.textContent = title;
+        if (title === 'All Todos'){
+            projectTitle.appendChild(allTodoIcon);
+        }
         projectDiv.appendChild(projectTitle);
 
         projectTitle.addEventListener("click", () => {

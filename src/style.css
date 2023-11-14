@@ -15,6 +15,7 @@ input,select{vertical-align:middle}
 
 :root{
     font-family: 'Rubik', serif;
+    color: #000;
 }
 
 body{
@@ -23,6 +24,7 @@ body{
     grid-template-rows: 80px 1fr;
     height: 100vh;
     background-color: #eef2ff;
+    
 }
 
 .header{
@@ -49,7 +51,7 @@ body{
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     background-color: #c7d2fe;
-    color: whitesmoke;
+    padding: 1.7rem;
 }
 
 .list{
@@ -64,8 +66,27 @@ body{
     justify-content: flex-end;
 }
 
+.allTodos{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+   
+}
+.allTodos>p{
+    font-size: 2rem;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.allTodos>p>i{
+    grid-row: 1 / 2;
+}
+.projectsHeader{
+    grid-row: 2 / 3;
+}
+
 .todo{
-    color: white;
     padding: 20px;
 }
 
