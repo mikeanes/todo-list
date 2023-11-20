@@ -187,6 +187,10 @@ function projectDisplay() {
     const projectsHeader = document.createElement('h2');
     projectsHeader.innerText = 'Projects';
     projectsHeader.classList.add('projectsHeader');
+    const projectsIcon = document.createElement('i');
+    projectsIcon.classList.add('fa');
+    projectsIcon.classList.add('fa-folder');
+    projectsHeader.appendChild(projectsIcon);
     const allTodoIcon = document.createElement('i');
     allTodoIcon.classList.add('fa');
     allTodoIcon.classList.add('fa-house');
@@ -201,8 +205,8 @@ function projectDisplay() {
             const deleteButton = document.createElement('button');
             const renameButton = document.createElement('button');
             
-            deleteButton.innerHTML = 'Delete';
-            renameButton.innerHTML = 'Rename';
+            deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+            renameButton.innerHTML = '<i class="fa fa-pen"></i>';
             deleteButton.addEventListener("click", () => {
                 deleteProject(index);
             });
@@ -212,15 +216,14 @@ function projectDisplay() {
                 renameInput.value = projectTitles[index];
                 projectForRename = projectTitles[index];
             });
-            
+            projectDiv.classList.add('project');
             projectDiv.appendChild(deleteButton);
             projectDiv.appendChild(renameButton);
         }else{
             projectDiv.classList.add('allTodos');
             projectDiv.appendChild(projectsHeader);
         }
-        
-        projectDiv.classList.add('project');
+      
         projectDiv.setAttribute("data-index", index);
         projectTitle.textContent = title;
         if (title === 'All Todos'){

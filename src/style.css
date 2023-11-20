@@ -13,11 +13,23 @@ table{border-collapse:collapse;border-spacing:0}
 hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
 input,select{vertical-align:middle}
 
+
 :root{
     font-family: 'Rubik', serif;
     color: #000;
 }
 
+button{
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0);
+}
 body{
     display: grid;
     grid-template-columns: 325px 1fr;
@@ -59,33 +71,57 @@ body{
     grid-column: 2 / 3;
     background-color: #c3cae7;
 }
-
-.project{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+#projects{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
-
 .allTodos{
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
-   
+    font-size: 2rem;
+    gap: 2rem;
 }
 .allTodos>p{
-    font-size: 2rem;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 40px 1fr;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+.allTodos>p>i{
+    grid-row: 1 / 2;
+    justify-self: center;
+}
+.projectsHeader{
+    gap: 10px;
+    grid-row: 2 / 3;
     display: grid;
     grid-template-columns: 40px 1fr;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
 }
-.allTodos>p>i{
-    grid-row: 1 / 2;
-}
-.projectsHeader{
-    grid-row: 2 / 3;
-}
+.projectsHeader>i{
+    grid-row: 1/2;
+    justify-self: center;
 
+}
+.project{
+    display: grid;
+    align-items: center;
+    font-size: 1.2rem;
+    grid-template-columns: 1fr repeat(2, 30px);
+    grid-template-rows: 1fr;
+    height: 27px;
+}
+.project>p{
+    grid-row: 1/2;
+}
 .todo{
     padding: 20px;
 }
