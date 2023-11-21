@@ -18,6 +18,7 @@ let todoDescription = document.getElementById('todoDescription');
 let todoDate = document.getElementById('todoDate');
 let todoPriority = document.getElementById('todoPriority');
 
+
 function pageLoad(){
     projectDisplay();
     createProject();
@@ -54,6 +55,8 @@ function createProject(){
 
     const projectTitle = document.getElementById('projectTitle');
     const addProject = document.getElementById('addProject');
+    addProject.disabled = true;
+    //if projectTitle
     addProject.addEventListener('click', () => {
         master.newProject(projectTitle.value);
         newProjectModal.close();
