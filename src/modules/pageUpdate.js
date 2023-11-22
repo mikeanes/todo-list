@@ -44,7 +44,8 @@ function createProject(){
     const newProjectButton = document.createElement('button');
     const newProjectModal = document.getElementById('projectModal');
     const closeModal = document.getElementById('closeProjectModal');
-    newProjectButton.innerHTML = 'New Project';
+    newProjectButton.innerHTML = '+ New Project';
+    newProjectButton.classList.add('newProject');
     let projectTitles;
     newProjectButton.addEventListener('click', () => {
         projectTitles = master.getProjectTitles();
@@ -66,7 +67,7 @@ function createProject(){
         projectTitle.value = '';
         projectDisplay();
         }else if(projectTitles.includes(projectTitle.value)){
-            alert('Project with this name already');
+            alert('Project with this name already exists!');
         }else{
             alert("Project name can't be empty!");
         }
