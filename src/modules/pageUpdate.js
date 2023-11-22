@@ -45,7 +45,9 @@ function createProject(){
     const newProjectModal = document.getElementById('projectModal');
     const closeModal = document.getElementById('closeProjectModal');
     newProjectButton.innerHTML = 'New Project';
+    let projectTitles;
     newProjectButton.addEventListener('click', () => {
+        projectTitles = master.getProjectTitles();
         newProjectModal.showModal();
     });
     closeModal.addEventListener('click', () => {
@@ -55,13 +57,20 @@ function createProject(){
 
     const projectTitle = document.getElementById('projectTitle');
     const addProject = document.getElementById('addProject');
-    addProject.disabled = true;
-    //if projectTitle
+    
     addProject.addEventListener('click', () => {
+        
+        if(projectTitle.value !== '' && projectTitles.includes(projectTitle.value) === false){
         master.newProject(projectTitle.value);
         newProjectModal.close();
         projectTitle.value = '';
         projectDisplay();
+        }else if(projectTitles.includes(projectTitle.value)){
+            alert('Project with this name already');
+        }else{
+            alert("Project name can't be empty!");
+        }
+        
     });
 };
 
