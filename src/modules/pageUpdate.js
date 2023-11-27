@@ -17,7 +17,7 @@ let todoName = document.getElementById('todoName');
 let todoDescription = document.getElementById('todoDescription');
 let todoDate = document.getElementById('todoDate');
 let todoPriority = document.getElementById('todoPriority');
-
+let projectTitlesForRename;
 
 function pageLoad(){
     projectDisplay();
@@ -29,10 +29,16 @@ function pageLoad(){
 
 function renameModalFunction(){
     confirmRename.addEventListener("click", () => {
+        if(renameInput.value !== '' && projectTitlesForRename.includes(renameInput.value) === false){
         renameProject(projectForRename, renameInput.value);
         projectForRename = '';
         renameModal.close();
         projectDisplay();
+        }else if(projectTitlesForRename.includes(renameInput.value)){
+            alert('Project with this name already exists!');
+        }else{
+            alert("Project name can't be empty!");
+        }
     });
     closeRenameModal.addEventListener("click", () => {
         renameModal.close();
@@ -225,6 +231,7 @@ function projectDisplay() {
             });
          
             renameButton.addEventListener("click", () => {
+                projectTitlesForRename = master.getProjectTitles();
                 renameModal.showModal();
                 renameInput.value = projectTitles[index];
                 projectForRename = projectTitles[index];

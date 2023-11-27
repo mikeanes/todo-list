@@ -60,14 +60,14 @@ body{
 .bars{
     font-size: 2rem;
 }
-#projectModal{
+#projectModal, #renameModal{
     border: none;
     border-radius: 10px;
     background-color: #eef2ff;
     height: 100px;
     font-size: 1.5rem;
 }
-#projectModal>div{
+.innerModal{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     height: 100%;
@@ -75,7 +75,7 @@ body{
     gap: 10px;
     
 }
-#projectModal>div>input{
+.innerModal>input{
     height: 100%;
     border-radius: 10px;
 }
@@ -88,7 +88,6 @@ body{
     margin-top: 10px;
 }
 .projectModalButtons>button{
-
     height: 30px;
     width: 70px;
     border-radius: 10px;
