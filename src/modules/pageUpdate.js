@@ -5,6 +5,7 @@ const master = Master();
 let selectedProject = 'All Todos';
 let projectForRename;
 let selectedTodoIndex;
+let projectTitlesForRename;
 const renameModal = document.getElementById('renameModal');
 const closeRenameModal = document.getElementById('closeRenameModal');
 const confirmRename = document.getElementById('renameButton');
@@ -13,11 +14,16 @@ const todoModal = document.getElementById('todoModal');
 const closeTodoModal = document.getElementById('closeTodoModal');
 const updateTodoButton = document.getElementById('updateTodo');
 const addTodoButton = document.getElementById('addTodo');
+const taskbar = document.getElementById('taskbar');
+const list = document.getElementById('list');
 let todoName = document.getElementById('todoName');
 let todoDescription = document.getElementById('todoDescription');
 let todoDate = document.getElementById('todoDate');
 let todoPriority = document.getElementById('todoPriority');
-let projectTitlesForRename;
+const hamburger = document.getElementById('hamburger');
+const parentList = document.getElementById('parentList');
+let updatingProjectTitle = document.getElementById('updatingProjectTitle');
+updatingProjectTitle.innerHTML = 'All Todos';
 
 function pageLoad(){
     projectDisplay();
@@ -25,7 +31,21 @@ function pageLoad(){
     displayTodos();
     addTodo();
     renameModalFunction();
+    hamburgerMenu();
 };
+
+function hamburgerMenu(){
+    hamburger.addEventListener('click', () => {
+        if(taskbar.style.display === 'none' && parentList.style.gridColumn === '1 / 3'){
+            parentList.removeAttribute('style');
+            taskbar.removeAttribute('style');
+            
+        }else{
+            taskbar.style.display = 'none';
+            parentList.style.gridColumn = '1 / 3';
+        }
+    })
+}
 
 function renameModalFunction(){
     confirmRename.addEventListener("click", () => {
@@ -99,6 +119,7 @@ function deleteTodo(projectTitle, todoIndex){
 function selectProject(index){
     let projectTitles = master.getProjectTitles();
     selectedProject = projectTitles[index];
+    updatingProjectTitle.innerHTML = selectedProject;
     displayTodos();
 };
 
@@ -126,8 +147,7 @@ function addTodo(){
 };
 
 function displayTodos() {
-    let todoList = document.getElementById('list');
-    todoList.innerHTML = '';
+    list.innerHTML = '';
     let projectTodos;
     projectTodos = [];
     const projectTitles = master.getProjectTitles();
@@ -161,7 +181,7 @@ function displayTodos() {
     }
 
     if (selectedProject !== 'All Todos') {
-        todoList.appendChild(newTodoButton);
+        list.appendChild(newTodoButton);
     }
 
     projectTodos.forEach((info, index) => {
@@ -198,7 +218,7 @@ function displayTodos() {
         todoDiv.appendChild(editButton);
         todoDiv.appendChild(deleteButton);
         }
-        todoList.appendChild(todoDiv);
+        list.appendChild(todoDiv);
     });
 };
 

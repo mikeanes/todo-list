@@ -104,11 +104,35 @@ body{
     background-color: #c7d2fe;
     padding: 1.7rem;
 }
-
+#hamburger{
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+#hamburger:hover{
+    transform: scale(1.03);
+}
 .list{
     grid-row: 2 / 3;
     grid-column: 2 / 3;
     background-color: #c3cae7;
+    
+
+}
+.list>h1{
+    font-size: 3rem;
+    margin-top: 2.5rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    margin-bottom: 2rem;
+    background-color: #eef2ff;
+    border-radius: 5px;
+    display: grid;
+    align-content: center;
+    padding-left: 1.5rem;
+}
+#list{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
 }
 #projects{
     display: grid;
@@ -151,6 +175,7 @@ body{
     justify-self: center;
 
 }
+
 .project{
     display: grid;
     align-items: center;
@@ -190,7 +215,7 @@ body{
     transform: scale(1.05); 
 }
 .todo{
-    padding: 20px;
+    
 }
 
 .logo{
