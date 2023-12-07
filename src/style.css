@@ -130,9 +130,46 @@ body{
     align-content: center;
     padding-left: 1.5rem;
 }
+
+.list>div>button{
+    height: 2rem;
+    font-size: 1.4rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+.list>div>button:hover{
+    transform: scale(1.05); 
+    background-color: rgb(177, 183, 204);
+}
+h1>p{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 #list{
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(2rem, 1fr)); 
+    gap: 1rem;
+}
+#list>div{
+    min-height: 2rem;
+    background-color: #eef2ff;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 40px 40px;
+}
+.todo{
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    
+}
+.todo>input{
+    grid-row: 1/2;
+}
+.todoTitle{
+    flex: 1;
 }
 #projects{
     display: grid;
@@ -214,9 +251,7 @@ body{
     background-color: rgb(177, 183, 204);
     transform: scale(1.05); 
 }
-.todo{
-    
-}
+
 
 .logo{
     height: 4rem;

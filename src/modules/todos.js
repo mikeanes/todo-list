@@ -66,19 +66,19 @@ const Todo = (title, description, dueDate, priority) => {
 
 
         const titleElement = document.createElement('p');
-        titleElement.textContent = `Todo Title: ${_title}`;
+        titleElement.textContent = `${_title}`;
         titleElement.classList.add('todo-title');
 
         const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = `Description: ${_description}`;
+        descriptionElement.textContent = `${_description}`;
         descriptionElement.classList.add('todo-description');
 
         const dateElement = document.createElement('p');
-        dateElement.textContent = `Due Date: ${_dueDate}`;
+        dateElement.textContent = `${_dueDate}`;
         dateElement.classList.add('todo-date');
 
         const priorityElement = document.createElement('p');
-        priorityElement.textContent = `Priority: ${_priority}`;
+        //priorityElement.textContent = `${_priority}`;
         priorityElement.classList.add('todo-priority');
         
         todoDiv.appendChild(titleElement);

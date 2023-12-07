@@ -152,7 +152,7 @@ function displayTodos() {
     projectTodos = [];
     const projectTitles = master.getProjectTitles();
     const newTodoButton = document.createElement('button');
-    newTodoButton.innerHTML = 'Add New Todo';
+    newTodoButton.innerHTML = '+ Add New Todo';
     
     newTodoButton.addEventListener('click', () => {
         updateTodoButton.style.display = 'none';
@@ -188,8 +188,8 @@ function displayTodos() {
         const todoDiv = document.createElement('div');
         const editButton = document.createElement('button');
         const deleteButton = document.createElement('button');
-        editButton.innerHTML = 'Edit';
-        deleteButton.innerHTML = 'Delete';
+        editButton.innerHTML = '<i class="fa fa-pen"></i>';
+        deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
         todoDiv.setAttribute('data-index', index);    
         
         editButton.addEventListener("click", () => {
