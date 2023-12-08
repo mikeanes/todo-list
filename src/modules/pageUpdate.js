@@ -186,6 +186,10 @@ function displayTodos() {
 
     projectTodos.forEach((info, index) => {
         const todoDiv = document.createElement('div');
+        const todoInfo = master.getTodoInfo(selectedProject, index);
+        if(todoInfo && todoInfo.priority === 'High'){
+            todoDiv.style.backgroundColor = 'red';
+        }
         const editButton = document.createElement('button');
         const deleteButton = document.createElement('button');
         editButton.innerHTML = '<i class="fa fa-pen"></i>';
@@ -197,7 +201,6 @@ function displayTodos() {
             updateTodoButton.style.display = '';
             addTodoButton.style.display = 'none';
             todoModal.showModal();
-            
             todoName.value = todoInfo.title;
             todoDescription.value = todoInfo.description;
             todoDate.value = todoInfo.dueDate;

@@ -161,15 +161,20 @@ h1>p{
     grid-template-columns: 1fr 40px 40px;
 }
 .todo{
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 40px repeat(2, 1fr) 90px;
+    grid-template-rows: 1fr;
     display: grid;
+    align-items: center;
     
 }
 .todo>input{
     grid-row: 1/2;
 }
-.todoTitle{
-    flex: 1;
+.todo-date{
+    justify-self: right;
+}
+.todo-description{
+    color: #525252;
 }
 #projects{
     display: grid;
