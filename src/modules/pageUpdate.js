@@ -187,9 +187,6 @@ function displayTodos() {
     projectTodos.forEach((info, index) => {
         const todoDiv = document.createElement('div');
         const todoInfo = master.getTodoInfo(selectedProject, index);
-        if(todoInfo && todoInfo.priority === 'High'){
-            todoDiv.style.backgroundColor = 'red';
-        }
         const editButton = document.createElement('button');
         const deleteButton = document.createElement('button');
         editButton.innerHTML = '<i class="fa fa-pen"></i>';
