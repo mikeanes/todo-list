@@ -55,6 +55,8 @@ const Project = (title) => {
     function todoElement(){
         return projectTodos.map(todos => todos.todoElement());
     };
+
+    ///////// EXPERIMENTAL //////////
     
     return{setTitle, getTitle, addTodo, getProjectTodos, todoElement, removeTodo, updateTodo, getTodoInfo};
 }

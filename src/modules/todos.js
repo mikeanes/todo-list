@@ -90,20 +90,28 @@ const Todo = (title, description, dueDate, priority) => {
         const dateElement = document.createElement('p');
         dateElement.textContent = `${_dueDate}`;
         dateElement.classList.add('todo-date');
-
-        // const priorityElement = document.createElement('p');
-        // priorityElement.textContent = `${_priority}`;
-        // priorityElement.classList.add('todo-priority');
         
         todoDiv.appendChild(titleElement);
         todoDiv.appendChild(descriptionElement);
         todoDiv.appendChild(dateElement);
-        //todoDiv.appendChild(priorityElement);
         todoDiv.appendChild(checkmarkLabel);
 
         return todoDiv;
         
     };
+
+    ///////// EXPERIMENTAL //////////
+    function toObject() {
+        return {
+            title: _title,
+            description: _description,
+            dueDate: _dueDate,
+            priority: _priority,
+            completed: _completed,
+        };
+    }
+
+
     return{getTitle, getDescription, getDueDate, getPriority,
          setTitle, setDescription, setDueDate, setPriority, todoElement, 
          getProjectName, getCompleted, setCompleted};

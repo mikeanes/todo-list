@@ -86,8 +86,8 @@ const Master = () => {
         }
     };
 
+    ///////// EXPERIMENTAL //////////
 
-    
   
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
             , getTodoElements, renameProject, removeTodoFromProject, updateTodoInProject, getTodoInfo};
