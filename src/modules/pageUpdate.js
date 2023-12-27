@@ -1,4 +1,5 @@
 import Master from "./master";
+import Storage from "./storage";
 
 const master = Master();
 
@@ -277,8 +278,17 @@ function projectDisplay() {
 
         projects.appendChild(projectDiv);
     });
-    console.log(master.getProjectTitles());
+    //console.log(master.getProjectTitles());
+    console.log(master.toJSON());
+    //localStorage.setItem('todos', JSON.stringify(master.toJSON()));
 };
+
+function getFromLocalStorage(){
+    const reference = localStorage.getItem('todos');
+    if (reference){
+        console.log(JSON.parse(reference));
+    }
+}
 
 function renameProject(oldTitle, newTitle){
     master.renameProject(oldTitle, newTitle);

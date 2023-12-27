@@ -46,19 +46,20 @@ const Project = (title) => {
             };
         }
     };
-    
-
-    function getProjectTodos(){
-        return projectTodos.map(todos => todos.toString());
-    };
 
     function todoElement(){
         return projectTodos.map(todos => todos.todoElement());
     };
 
     ///////// EXPERIMENTAL //////////
+    function toJSON(){
+        return {
+            title: _title,
+            todos: projectTodos.map(todos => todos.toJSON())
+        };
+    }
     
-    return{setTitle, getTitle, addTodo, getProjectTodos, todoElement, removeTodo, updateTodo, getTodoInfo};
+    return{setTitle, getTitle, addTodo, todoElement, removeTodo, updateTodo, getTodoInfo, toJSON};
 }
 
 export default Project;

@@ -12,6 +12,9 @@ const Master = () => {
     function getProjects(){
         return projects;
     };
+    function setProjects(array){
+        projects = array;
+    };
 
     function newProject(title){
         projects.push(Project(title));
@@ -87,10 +90,14 @@ const Master = () => {
     };
 
     ///////// EXPERIMENTAL //////////
-
+    function toJSON(){
+        return{
+            projects: projects.map(project => project.toJSON())
+        };
+    }
   
     return {newProject, getProjectTitles, deleteProject, getProjects, addTodoToProject
-            , getTodoElements, renameProject, removeTodoFromProject, updateTodoInProject, getTodoInfo};
+            , getTodoElements, renameProject, removeTodoFromProject, updateTodoInProject, getTodoInfo, toJSON, setProjects};
 }
 
 export default Master;
