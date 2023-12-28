@@ -88,8 +88,7 @@ const Master = () => {
             console.error(`Project "${projectTitle}" not found.`);
         }
     };
-
-    ///////// EXPERIMENTAL //////////
+    
     function toJSON(){
         return{
             projects: projects.map(project => project.toJSON())

@@ -3,4 +3,3 @@ import pageLoad from './modules/pageUpdate';
 
 
 pageLoad();
-

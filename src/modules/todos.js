@@ -100,7 +100,6 @@ const Todo = (title, description, dueDate, priority) => {
         
     };
 
-    ///////// EXPERIMENTAL //////////
     function toJSON() {
         return {
             title: _title,
@@ -110,7 +109,6 @@ const Todo = (title, description, dueDate, priority) => {
             completed: _completed,
         };
     }
-
 
     return{getTitle, getDescription, getDueDate, getPriority,
          setTitle, setDescription, setDueDate, setPriority, todoElement, 

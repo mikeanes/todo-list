@@ -51,7 +51,6 @@ const Project = (title) => {
         return projectTodos.map(todos => todos.todoElement());
     };
 
-    ///////// EXPERIMENTAL //////////
     function toJSON(){
         return {
             title: _title,

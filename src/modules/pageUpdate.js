@@ -1,7 +1,4 @@
-import Master from "./master";
 import Storage from "./storage";
-
-const master = Master();
 
 let selectedProject = 'All Todos';
 let projectForRename;
@@ -75,7 +72,7 @@ function createProject(){
     newProjectButton.classList.add('newProject');
     let projectTitles;
     newProjectButton.addEventListener('click', () => {
-        projectTitles = master.getProjectTitles();
+        projectTitles = Storage.getProjectTitles();
         newProjectModal.showModal();
     });
     closeModal.addEventListener('click', () => {
@@ -89,7 +86,7 @@ function createProject(){
     addProject.addEventListener('click', () => {
         
         if(projectTitle.value !== '' && projectTitles.includes(projectTitle.value) === false){
-        master.newProject(projectTitle.value);
+        Storage.newProject(projectTitle.value);
         newProjectModal.close();
         projectTitle.value = '';
         projectDisplay();
@@ -103,8 +100,8 @@ function createProject(){
 };
 
 function deleteProject(index){
-    let projectTitles = master.getProjectTitles();
-    master.deleteProject(index);
+    let projectTitles = Storage.getProjectTitles();
+    Storage.deleteProject(index);
     projectDisplay();
     if (selectedProject === projectTitles[index]){
         selectedProject = 'All Todos';
@@ -113,12 +110,12 @@ function deleteProject(index){
 };
 
 function deleteTodo(projectTitle, todoIndex){
-    master.removeTodoFromProject(projectTitle, todoIndex);
+    Storage.removeTodoFromProject(projectTitle, todoIndex);
     displayTodos();
 };
 
 function selectProject(index){
-    let projectTitles = master.getProjectTitles();
+    let projectTitles = Storage.getProjectTitles();
     selectedProject = projectTitles[index];
     updatingProjectTitle.innerHTML = selectedProject;
     displayTodos();
@@ -139,7 +136,7 @@ function addTodo(){
             event.preventDefault();
             return;
         }
-        master.addTodoToProject(selectedProject, todoName.value, 
+        Storage.addTodoToProject(selectedProject, todoName.value, 
             todoDescription.value, todoDate.value, todoPriority.value);
         todoModal.close();
         displayTodos();
@@ -151,7 +148,7 @@ function displayTodos() {
     list.innerHTML = '';
     let projectTodos;
     projectTodos = [];
-    const projectTitles = master.getProjectTitles();
+    const projectTitles = Storage.getProjectTitles();
     const newTodoButton = document.createElement('button');
     newTodoButton.innerHTML = '+ Add New Todo';
     
@@ -166,7 +163,7 @@ function displayTodos() {
     });
 
     updateTodoButton.addEventListener('click', () => {
-        master.updateTodoInProject(selectedProject, selectedTodoIndex, todoName.value, 
+        Storage.updateTodoInProject(selectedProject, selectedTodoIndex, todoName.value, 
             todoDescription.value, todoDate.value, todoPriority.value);
         displayTodos();
         todoModal.close();
@@ -174,11 +171,11 @@ function displayTodos() {
 
     if (selectedProject === 'All Todos') {
         projectTitles.forEach(title => {
-            const todos = master.getTodoElements(title);
+            const todos = Storage.getTodoElements(title);
             projectTodos = projectTodos.concat(todos);
         });
     } else {
-        projectTodos = master.getTodoElements(selectedProject);
+        projectTodos = Storage.getTodoElements(selectedProject);
     }
 
     if (selectedProject !== 'All Todos') {
@@ -187,7 +184,7 @@ function displayTodos() {
 
     projectTodos.forEach((info, index) => {
         const todoDiv = document.createElement('div');
-        const todoInfo = master.getTodoInfo(selectedProject, index);
+        const todoInfo = Storage.getTodoInfo(selectedProject, index);
         const editButton = document.createElement('button');
         const deleteButton = document.createElement('button');
         editButton.innerHTML = '<i class="fa fa-pen"></i>';
@@ -236,7 +233,7 @@ function projectDisplay() {
     allTodoIcon.classList.add('fa-house');
     let projects = document.getElementById('projects');
     projects.innerHTML = '';
-    let projectTitles = master.getProjectTitles();
+    let projectTitles = Storage.getProjectTitles();
     projectTitles.forEach((title, index) => {
         const projectDiv = document.createElement("div");
         const projectTitle = document.createElement('p');
@@ -252,7 +249,7 @@ function projectDisplay() {
             });
          
             renameButton.addEventListener("click", () => {
-                projectTitlesForRename = master.getProjectTitles();
+                projectTitlesForRename = Storage.getProjectTitles();
                 renameModal.showModal();
                 renameInput.value = projectTitles[index];
                 projectForRename = projectTitles[index];
@@ -278,22 +275,11 @@ function projectDisplay() {
 
         projects.appendChild(projectDiv);
     });
-    //console.log(master.getProjectTitles());
-    console.log(master.toJSON());
-    //localStorage.setItem('todos', JSON.stringify(master.toJSON()));
-};
 
-function getFromLocalStorage(){
-    const reference = localStorage.getItem('todos');
-    if (reference){
-        console.log(JSON.parse(reference));
-    }
-}
+};
 
 function renameProject(oldTitle, newTitle){
-    master.renameProject(oldTitle, newTitle);
+    Storage.renameProject(oldTitle, newTitle);
 };
-
-
 
 export default pageLoad;
