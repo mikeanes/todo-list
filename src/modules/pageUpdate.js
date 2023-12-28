@@ -1,5 +1,8 @@
 import Storage from "./storage";
 
+
+
+
 let selectedProject = 'All Todos';
 let projectForRename;
 let selectedTodoIndex;
@@ -23,6 +26,10 @@ const parentList = document.getElementById('parentList');
 let updatingProjectTitle = document.getElementById('updatingProjectTitle');
 updatingProjectTitle.innerHTML = 'All Todos';
 
+const logoContainer = document.getElementById('logoContainer');
+
+const fartLogo = document.createElement('div');
+
 function pageLoad(){
     projectDisplay();
     createProject();
@@ -30,6 +37,10 @@ function pageLoad(){
     addTodo();
     renameModalFunction();
     hamburgerMenu();
+
+    fartLogo.classList.add('logo');
+    logoContainer.appendChild(fartLogo);
+
 };
 
 function hamburgerMenu(){

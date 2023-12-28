@@ -312,8 +312,10 @@ h1>p{
 }
 
 .logo{
+    display: block;
     height: 4rem;
     transform: rotate(180deg);
+    content: url('./assets/fart.png');
 }
 
 .checkbox {
