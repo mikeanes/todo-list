@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
+    <script src="https://kit.fontawesome.com/6489c22dd9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <dialog id="projectModal">
+            <div class="innerModal">
+                <label for="projectTitle">Project Title</label>
+                <input type="text" name="projectTitle" id="projectTitle" minlength="1" maxlength="17">
+                <div class="projectModalButtons">
+                    <button id="addProject">Add</button>
+                    <button id="closeProjectModal">Close</button>
+                </div>
+            </div>
+    </dialog>
+
+    <dialog id="renameModal">
+        <div class="innerModal">
+            <label for="renameProject">Rename</label>
+            <input type="text" name="renameProject" id="renameProject">
+            <div class="projectModalButtons">
+                <button id="renameButton">Rename</button>
+                <button id="closeRenameModal">Close</button>
+            </div>
+        </div>
+    </dialog>
+      
+    <dialog id="todoModal">
+        <div class="innerTodoModal">
+            <form id="todoForm">
+                <label for="todoName">Todo Name</label>
+                <input type="text" name="todoName" id="todoName" required>
+                <label for="todoDescription">Description (optional)</label>
+                <input type="text" name="todoDescription" id="todoDescription">
+                <label for="todoDate">Due Date</label>
+                <input type="date" name="todoDate" id="todoDate" required>
+                <label for="todoPriority">Priority</label>
+                <select name="todoPriority" id="todoPriority" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            
+                <button type="submit" id="addTodo">Add</button>
+            
+            </form>
+            <div class="innerModalTodoButtons">
+                <button id="updateTodo">Update</button>
+                <button id="closeTodoModal">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="header">
+        <i class="fa fa-bars bars" id="hamburger"></i>
+        <div class="logoContainer">
+            <h1>ToDoot</h1>
+            <img src="/src/assets/fart.png" alt="todoot logo" class="logo">
+        </div>
+        <i></i>
+    </div>
+    <div class="taskbar" id="taskbar">
+        <div id="projects">
+            
+        </div>
+    </div>
+    <div class="list" id="parentList">
+        <h1 id="projectTitleDisplay">
+            <p id="updatingProjectTitle"></p>
+        </h1>
+        <div id="list">
+
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
