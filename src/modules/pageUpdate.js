@@ -52,6 +52,7 @@ function hamburgerMenu(){
         }else{
             taskbar.style.display = 'none';
             parentList.style.gridColumn = '1 / 3';
+            parentList.style.gridRow = '2/4'
         }
     })
 }
