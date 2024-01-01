@@ -1,7 +1,4 @@
-import Storage from "./storage";
-
-
-
+import Storage from './storage';
 
 let selectedProject = 'All Todos';
 let projectForRename;
@@ -17,13 +14,13 @@ const updateTodoButton = document.getElementById('updateTodo');
 const addTodoButton = document.getElementById('addTodo');
 const taskbar = document.getElementById('taskbar');
 const list = document.getElementById('list');
-let todoName = document.getElementById('todoName');
-let todoDescription = document.getElementById('todoDescription');
-let todoDate = document.getElementById('todoDate');
-let todoPriority = document.getElementById('todoPriority');
+const todoName = document.getElementById('todoName');
+const todoDescription = document.getElementById('todoDescription');
+const todoDate = document.getElementById('todoDate');
+const todoPriority = document.getElementById('todoPriority');
 const hamburger = document.getElementById('hamburger');
 const parentList = document.getElementById('parentList');
-let updatingProjectTitle = document.getElementById('updatingProjectTitle');
+const updatingProjectTitle = document.getElementById('updatingProjectTitle');
 updatingProjectTitle.innerHTML = 'All Todos';
 
 const logoContainer = document.getElementById('logoContainer');
@@ -52,9 +49,9 @@ function hamburgerMenu(){
         }else{
             taskbar.style.display = 'none';
             parentList.style.gridColumn = '1 / 3';
-            parentList.style.gridRow = '2/4'
+            parentList.style.gridRow = '2/4';
         }
-    })
+    });
 }
 
 function renameModalFunction(){
